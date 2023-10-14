@@ -1,10 +1,10 @@
 .totalTimeBox {
-    position: sticky;
-    margin-top: 300px;
-    margin-left: 1000px;
-    width: 100px;
-    height: 100px;
-    background-color: #3498db;
-    color: #ffffff;
-    padding: 10px;
-  }
+  position: sticky;
+  margin-top: 300px;
+  margin-left: 1000px;
+  width: 100px;
+  height: 100px;
+  background-color: #3498db;
+  color: #ffffff;
+  padding: 10px;
+}
