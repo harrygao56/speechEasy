@@ -1,0 +1,6 @@
+.goButton {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    cursor: pointer;
+  }
