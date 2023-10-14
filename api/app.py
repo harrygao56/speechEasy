@@ -13,6 +13,7 @@ api = Api(app)
 
 # Set OpenAI API Key 
 openai.api_key = os.getenv("OPENAI_API_KEY")
+print(os.getenv("OPENAI_API_KEY"))
 
 # Compare endpoint: Used to compare the speaker transcription to the current talking point, return whether or not the speaker is on track
 class Compare(Resource):
@@ -30,6 +31,10 @@ class Compare(Resource):
         messages.append(question)
         output = openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=messages)
         return output['choices'][0]['message']['content']
+
+
+class Listening(Resource):
+    print("hi")
 
 
 # Adding api endpoints
