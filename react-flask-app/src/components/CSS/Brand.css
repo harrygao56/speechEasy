@@ -1,0 +1,10 @@
+.box {
+    position: absolute;
+    top: 0;
+    left: 45%;
+    width: 75px;
+    height: 70px;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+  }

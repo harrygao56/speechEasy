@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from "react-router-dom";
 
-import HomePage from "./components/homepage.js";
+import HomePage from "./Components/homepage";
+import Brand from "./Components/Brand";
 
 
 const App = () => {

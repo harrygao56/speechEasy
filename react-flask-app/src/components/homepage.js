@@ -1,7 +1,10 @@
+
+import React from 'react';
+import Brand from './Brand';
 function HomePage () {
     return (
         <div>
-            Hello
+            <Brand/>
         </div>
     )
 }
