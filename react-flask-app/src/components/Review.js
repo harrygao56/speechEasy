@@ -25,9 +25,15 @@ const Review = () => {
     }, []);
 
     return (
-        <div class = "review-container">
-            <p>{concated}</p>
-            <p id="speech-review">Generating Speech Review...</p>
+        <div>
+            <div class="brand">
+                <p class="brandText">speechEasy</p>
+            </div>
+            
+            <div class = "review-container">
+                <p>{concated}</p>
+                <p id="speech-review">Generating Speech Review...</p>
+            </div>
         </div>
     )
 

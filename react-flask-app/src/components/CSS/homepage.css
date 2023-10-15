@@ -20,14 +20,14 @@
     left: 900px;
     width: 300px;
     height: 100px;
-    background-color: #0f81ec;
+    background-color: #ffffff;
     padding: 10px;
-    border: solid rgb(100, 99, 99) 2px;
+    border: solid #0f81ec 2px;
     border-radius: 10px;
 }
 .totalTime p{
     margin-top: 5px;
-    color: #ffffff;
+    color: #0f81ec;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +35,7 @@
     font-size: 50px;
 }
 .totalTime label{
-    color: #ffffff;
+    color: #0f81ec;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
 }
