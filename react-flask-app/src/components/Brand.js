@@ -1,9 +1,10 @@
 import React from 'react';
 import './CSS/Brand.css';
+import logo from './images/speakeasylogowhite.png'
 const Brand = () => {
     return (
         <div className="box">
-          <p className="box-text">speechEasy</p>
+          <img src={logo} alt="Example PNG Image"/>
         </div>
     );
 };

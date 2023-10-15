@@ -17,14 +17,9 @@ const TalkingPoints = () => {
     <div>
       <h1>Talking Points</h1>
       {points.map((point, index) => (
-        <div key={index} style={{ marginBottom: '10px' }}>
-          <textarea
-            value={point}
-            onChange={(e) => handlePointChange(index, e.target.value)}
-            placeholder={`Point ${index + 1}`}
-            style={{ width: '50%', minHeight: '50px' }}
-          />
-        </div>
+        
+          <textarea className={`point${index + 1}`} value={point} onChange={(e) => handlePointChange(index, e.target.value)} placeholder={`Point ${index + 1}`} style={{ width: '50%', minHeight: '50px' }}/>
+        
       ))}
       <button onClick={handleAddPoint}>Add Point</button>
     </div>
