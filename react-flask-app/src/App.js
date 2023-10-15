@@ -10,6 +10,7 @@ import Presentation  from './Components/Presentation';
 const App = () => {
   return (
     <div>
+      <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
        <Routes>
          <Route exact path="/" element={<HomePage />}/>
          <Route exact path="/tt" element={<TranscriptTest />}/>
