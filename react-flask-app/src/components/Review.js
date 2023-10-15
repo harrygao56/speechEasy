@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useMyPointsContext } from '../pointscontext';
 import './CSS/Review.css';
-
+import { useNavigate } from 'react-router-dom';
 
 const Review = () => {
     const [points, setPoints] = useMyPointsContext();
@@ -19,7 +19,11 @@ const Review = () => {
       let speechReview = await response.json();
       document.getElementById("speech-review").innerText = speechReview;
     }
-
+    const navigate = useNavigate();
+    const handleButtonClick = () => {
+    
+        navigate('/');
+    };
     useEffect(() => {
         review();
     }, []);
@@ -32,7 +36,8 @@ const Review = () => {
             
             <div class = "review-container">
                 <p>{concated}</p>
-                <p id="speech-review">Generating Speech Review...</p>
+                <p class="speech-review">Generating Speech Review...</p>
+                <button class="homeButton" id="goButton" onClick={handleButtonClick}>HomePage</button>
             </div>
         </div>
     )
