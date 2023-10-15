@@ -42,5 +42,23 @@ class Compare(Resource):
 # Adding api endpoints
 api.add_resource(Compare, '/compare')
 
+class Review(Resource):
+    def post(self):
+        transcript = request.form['transcript']
+        content = f"""
+            Here is the transcript of a speech I just gave: '{transcript}'. Please provide feedback on my speech and presentation, highlighting any areas where I can improve according to general principles of public speaking and presenting.
+        """
+        messages = [
+            {
+                "role": "user",
+                "content": content
+            }
+        ]
+        output = openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=messages)['choices'][0]['message']['content']
+        return output
+api.add_resource(Review, '/review')
+
+
+
 if __name__ == '__main__':
     app.run(debug='true')
