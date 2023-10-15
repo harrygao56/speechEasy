@@ -1,11 +1,10 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useMyPointsContext } from '../pointscontext';
 
 
 const Review = () => {
     const [points, setPoints] = useMyPointsContext();
-    const [speechReview, setSpeechReview] = useEffect("");
     var concated = points.join(" ");
 
     async function review() {
@@ -15,16 +14,18 @@ const Review = () => {
         method: "POST",
         body: formData,
       });
-      const output = await response.json();
-      setSpeechReview(output);
+      let speechReview = await response.json();
+      document.getElementById("speech-review").innerText = speechReview;
     }
-    
-    review();
+
+    useEffect(() => {
+        review();
+    }, []);
 
     return (
         <div>
-            <p>{speechReview}</p>
             <p>{concated}</p>
+            <p id="speech-review">Generating Speech Review...</p>
         </div>
     )
 }

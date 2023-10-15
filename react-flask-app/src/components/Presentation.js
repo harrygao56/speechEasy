@@ -8,8 +8,6 @@ const Presentation = () => {
     const size = points.length;
     const interval = 10;
     const navigate = useNavigate();
-
-    const [color, setColor] = useState("green"); 
     const [secondSeconds, setSecondSeconds] = useState(0);
 
   var seconds = 0;
@@ -104,7 +102,6 @@ const Presentation = () => {
   }
 
   function stop() {
-      console.log(socket);
       if (socket) {
           socket.send(JSON.stringify({ terminate_session: true }));
           socket.close();
@@ -121,24 +118,23 @@ const Presentation = () => {
       totalChars += speech.length;
       speechIntervals.push("");
 
-      console.log(setMsgPoints(seconds));
-      console.log("seconds:" + seconds);
-
       const formData = new FormData();
-      formData.append('talking_point', setMsgPoints(seconds));
+      let pt = setMsgPoints(seconds - 5);
+      formData.append('talking_point', pt);
       formData.append('speech', speech);
       const response = await fetch("http://127.0.0.1:5000/compare", {
           method: "POST",
           body: formData,
       });
       const output = await response.json();
-      console.log(speech);
       console.log(output);
+      console.log(speech);
+      console.log(pt);
       if (output === "True") {
-          setColor("green");
+        document.body.style.backgroundColor = "#73ffa6";
       }
       else {
-          setColor("red");
+        document.body.style.backgroundColor = "#ff7373";
       }
   }
 
@@ -148,12 +144,14 @@ const Presentation = () => {
         seconds += 1;
         if (seconds > size * 10) {
             setPoints(speechIntervals);
+            document.body.style.backgroundColor = "white";
             stop();
             navigate('/Review');
         }
         setSecondSeconds(seconds);
       }, 1000);
 
+      document.body.style.backgroundColor = "#73ffa6";
       run();
       const compInterval = setInterval(compare, 10000);
   
@@ -167,7 +165,7 @@ const Presentation = () => {
 
     const setMsgPoints = (time) =>{
       // const prompt = document.getElementById("pointPrompt");
-      const pointprompttoshow = points[Math.floor(time/interval)];
+      const pointprompttoshow = points[Math.floor(time/10)];
       // prompt.innerHTML=pointprompttoshow;
       return pointprompttoshow;
     };
@@ -179,32 +177,26 @@ const Presentation = () => {
     };
 
     return (
-        <div class="presentation">
+        <div>
             <div class="brand">
                 <p class="brandText">speechEasy</p>
             </div>
-            
-            <div class="transcript" id="transcript">
-                <label for="transcript">Transcript:</label>
-                <p id="transcript"></p>
+            <div id="presentation">
+                <div id="card-container">
+                    <div class="card" style={{marginRight: "70px"}}>
+                        <label>Live Transcript:</label>
+                        <p id="message"></p>
+                    </div>
+                    <div class="card">
+                        <label>Time:</label>
+                        <p id="time">{formatTime(secondSeconds)}</p>
+                    </div>
+                </div>
+                <div class="card" style={{marginTop: "200px"}}>
+                    <label>Current Talking Point:</label>
+                    <p id="pointPrompt">{setMsgPoints(secondSeconds)}</p>
+                </div>
             </div>
-
-            <div class="timerTime" id="timerTime">
-                <label for="transcript">Time:</label>
-                <p id="transcript">{formatTime(secondSeconds)}</p>
-            </div>
-
-            <div class="pointPrompt" id = "pointPrompt">
-                <label for="pointPrompt">Scheduled Talking Point:</label>
-                <p id="pointPrompt">{setMsgPoints(secondSeconds)}</p>
-            </div>
-
-          <button onClick={function() {
-              stop();
-          }}>Stop</button>
-
-          <div style={{width: "50px", height: "50px", backgroundColor: color}}></div>
-          <p id="message"></p>
         </div>
       );
 }
