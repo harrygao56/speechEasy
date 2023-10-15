@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Countdown = () => {
+  const navigate = useNavigate();
   const [countdown, setCountdown] = useState(3); 
 
   useEffect(() => {
     const timer = setInterval(() => {
       if (countdown > 0) {
         setCountdown(prevCountdown => prevCountdown - 1);
+      }
+      else{
+        navigate('/Presentation');
       }
     }, 1000);
 

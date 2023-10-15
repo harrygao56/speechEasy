@@ -2,9 +2,11 @@
 import React from 'react';
 import './CSS/homepage.css';
 import {useState} from 'react';
+import { useMyPointsContext } from '../pointscontext';
+import { Link } from 'react-router-dom';
 
 function HomePage () {
-    const [points, setPoints] = useState(['']);
+    const [ points, setPoints ] = useMyPointsContext();
 
     const handlePointChange = (index, value) => {
         const updatedPoints = [...points];
@@ -18,9 +20,9 @@ function HomePage () {
 
     const handleButtonClick = () => {
         const textarea = document.getElementById('point1');
+        alert(points[4])
         if (textarea) {
           const value = textarea.value;
-          alert('Textarea Value: ' + value);
         }
     };
     return (
@@ -37,7 +39,7 @@ function HomePage () {
 
 
             <div class="go">
-                <button class="goButton" id="goButton" onClick={handleButtonClick}>Begin!</button>
+                <button class="goButton" id="goButton" onClick={handleButtonClick}><Link to= "/countdown">Begin!</Link></button>
             </div>
 
 
