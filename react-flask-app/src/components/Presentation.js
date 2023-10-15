@@ -180,24 +180,31 @@ const Presentation = () => {
 
     return (
         <div class="presentation">
-          <div class="timer">
-            <h1>Timer:</h1>
-            <div class="timerTime">{formatTime(secondSeconds)}</div>
-          </div>
+            <div class="brand">
+                <p class="brandText">speechEasy</p>
+            </div>
+            
+            <div class="transcript" id="transcript">
+                <label for="transcript">Transcript:</label>
+                <p id="transcript"></p>
+            </div>
+
+            <div class="timerTime" id="timerTime">
+                <label for="transcript">Time:</label>
+                <p id="transcript">{formatTime(secondSeconds)}</p>
+            </div>
+
+            <div class="pointPrompt" id = "pointPrompt">
+                <label for="pointPrompt">Scheduled Talking Point:</label>
+                <p id="pointPrompt">{setMsgPoints(secondSeconds)}</p>
+            </div>
 
           <button onClick={function() {
               stop();
           }}>Stop</button>
+
           <div style={{width: "50px", height: "50px", backgroundColor: color}}></div>
           <p id="message"></p>
-
-          <div class="pointPrompt" id = "pointPrompt">
-            <div class="timerTime">{setMsgPoints(secondSeconds)}</div>
-          </div>
-
-          <div class="userPrompt">
-            <div class="promptBox"></div>
-          </div>
         </div>
       );
 }
