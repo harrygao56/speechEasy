@@ -34,9 +34,9 @@ const Review = () => {
                 <p class="brandText">speechEasy</p>
             </div>
             
-            <div class = "review-container">
+            <div class = "review-container" style={{marginTop: "80px"}}>
                 <p>{concated}</p>
-                <p class="speech-review">Generating Speech Review...</p>
+                <p id="speech-review">Generating Speech Review...</p>
                 <button class="homeButton" id="goButton" onClick={handleButtonClick}>HomePage</button>
             </div>
         </div>
