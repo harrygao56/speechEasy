@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './CSS/Countdown.css';
 
 const Countdown = () => {
   const navigate = useNavigate();
-  const [countdown, setCountdown] = useState(3); 
+  const [countdown, setCountdown] = useState(5); 
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -20,12 +21,15 @@ const Countdown = () => {
 
   return (
     <div>
-      <h1>Countdown Timer</h1>
-      <div>
+      <div class="brand">
+                <p class="brandText">speechEasy</p>
+      </div>
+      <div class="time">
+        <h1>Begin presentation in:</h1>
         {countdown === 0 ? (
           <p>Time's up!</p>
         ) : (
-          <p>Time remaining: {countdown} seconds</p>
+          <p>{countdown}</p>
         )}
       </div>
     </div>

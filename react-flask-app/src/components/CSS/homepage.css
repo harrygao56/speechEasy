@@ -53,12 +53,31 @@
     border-radius: 10px;
 }
 .point{
+    font-family: Arial, Helvetica, sans-serif;
     border-color: #0f81ec;
     border-width: 2px;
     border-radius: 10px;
 }
 .pointTime{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 30px;
     border-color: #0f81ec;
     border-width: 2px;
     border-radius: 10px;
+}
+.addPoint{
+    width: 100px;
+    height: 50px;
+    background-color: #0f81ec;
+    color: #ffffff;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    border-radius: 10px;
+}
+.goLink{
+    color: #ffffff;
 }

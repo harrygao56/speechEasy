@@ -56,7 +56,7 @@ function HomePage () {
 
 
             <div class="go">
-                <button class="goButton" id="goButton" onClick={handleButtonClick}><Link to= "/countdown">Begin!</Link></button>
+                <button class="goButton" id="goButton" onClick={handleButtonClick}><Link class="goLink" to= "/countdown">Begin!</Link></button>
             </div>
 
 
@@ -90,7 +90,7 @@ function HomePage () {
                     </div>
                 ))}
                 <br/>
-                <button onClick={handleAddPoint}>Add Point</button>
+                <button class="addPoint" onClick={handleAddPoint}>Add Point</button>
             </div>
         </div>
     )
