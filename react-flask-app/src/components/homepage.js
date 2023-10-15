@@ -2,7 +2,7 @@ import React from 'react';
 import './CSS/homepage.css';
 import {useState} from 'react';
 import { useMyPointsContext } from '../pointscontext';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 function HomePage () {
@@ -15,6 +15,8 @@ function HomePage () {
         updatedPoints[index] = value;
         setPoints(updatedPoints);
     };
+
+    const navigate = useNavigate();
 
     const handleAddPoint = () => {
         setPoints([...points, '']);
@@ -48,6 +50,7 @@ function HomePage () {
         if (textarea) {
           const value = textarea.value;
         }
+        navigate('/Countdown');
     };
     return (
         <div class="homepage">
@@ -63,16 +66,18 @@ function HomePage () {
 
 
             <div class="go">
-                <button class="goButton" id="goButton" onClick={handleButtonClick}><Link class="goLink" to= "/countdown">Begin!</Link></button>
+                <button class="goButton" id="goButton" onClick={handleButtonClick}>Begin!</button>
             </div>
 
 
-            <div>
+            <div class="talkingPoints">
+                <br/>
+                <br/>
+                <br/>
                 <h1>Talking Points</h1>
-                
                 {points.map((point, index) => (
                     
-                    <div key={`point${index + 1}`}>
+                    <div class="wholePoint"key={`point${index + 1}`}>
                         {/* <input
                         type="text"
                         id = {`value${index + 1}`}
@@ -88,7 +93,7 @@ function HomePage () {
                         <input class="pointTime"
                             type="text"
                             id = {`time${index + 1}`}
-                            placeholder={`Time duration for Point ${index + 1}`}
+                            placeholder={`Time duration for Point ${index + 1} (in seconds)`}
                             style={{ width: '50%' }}
                             onChange={(e) => handleTimeChange(index, e.target.value)}
                         />
