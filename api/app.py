@@ -12,7 +12,7 @@ CORS(app)
 api = Api(app)
 
 # Set OpenAI API Key 
-openai.api_key = "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"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Compare endpoint: Used to compare the speaker transcription to the current talking point, return whether or not the speaker is on track
 class Compare(Resource):

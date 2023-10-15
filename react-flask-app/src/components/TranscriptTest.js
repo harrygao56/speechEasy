@@ -1,7 +1,13 @@
+import { useState } from 'react';
+
+
 const TranscriptTest = () => {
+    const [color, setColor] = useState("green"); 
+
+    var socket;
+    var recorder;
+
     async function run() {
-        let socket;
-        let recorder;
         const response = await fetch("http://localhost:8000"); // get temp session token from server.js (backend)
         const data = await response.json();
 
@@ -33,12 +39,12 @@ const TranscriptTest = () => {
         };
 
         socket.onerror = (event) => {
-            console.error(event);
+            // console.error(event);
             socket.close();
         };
 
         socket.onclose = (event) => {
-            console.log(event);
+            // console.log(event);
             socket = null;
         };
 
@@ -82,12 +88,25 @@ const TranscriptTest = () => {
         };
     }
 
-    
+    function stop() {
+        console.log("stopping");
+        if (socket) {
+            socket.send(JSON.stringify({ terminate_session: true }));
+            socket.close();
+            socket = null;
+        }
+
+        if (recorder) {
+            recorder.pauseRecording();
+            recorder = null;
+        }
+    }
 
     async function startRecord(isRecording) {
         if (isRecording){
+            stop();
+
             let speech = document.getElementById("message").innerText;
-            
             const formData = new FormData();
             formData.append('talking_point', "The reason I am here today is to talk about cybersecurity awareness and to motivate you to become involved in the National Cybersecurity Awareness Campaign. In May 2009, President Obama issued the Cyberspace Policy Review, which recommends the Federal government “initiate a national public awareness and education campaign informed by previous successful campaigns.” The Department of Homeland Security launched the Stop. Think. Connect.™ (STC) Campaign in October 2010 in conjunction with National Cybersecurity Awareness Month. Stop. Think. Connect. is part of an unprecedented effort among Federal and State governments, industry, and non-profit organizations to promote safe online behavior and practices. Together we are working to combat threats and raise awareness across this country. Now, we want to get you to become an active member of the campaign to help us raise cybersecurity awareness with your family and friends and in your community.");
             formData.append('speech', speech);
@@ -98,7 +117,12 @@ const TranscriptTest = () => {
             const output = await response.json();
             console.log(speech);
             console.log(output);
-            run();
+            if (output == "True") {
+                setColor("green");
+            }
+            else {
+                setColor("red");
+            }
         }
         run();
     }
@@ -107,7 +131,12 @@ const TranscriptTest = () => {
         <div className="totalTimeBox">
             <h1>Transcription Test</h1>
             <p id="real-time-title">Click start to begin recording!</p>
-            <button id="button" onClick={function() { startRecord(false); setInterval(startRecord, 15000, true); }}>Start</button>
+            <button id="button" onClick={function() {
+                startRecord(false);
+                setInterval(startRecord, 10000, true);
+            }}>Start</button>
+            <button onClick={function() {stop(); clearInterval();}}>Stop</button>
+            <div style={{width: "50px", height: "50px", backgroundColor: color}}></div>
             <p id="message"></p>
         </div>
     );

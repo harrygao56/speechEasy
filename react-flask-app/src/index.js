@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
     <BrowserRouter>
       <App />
     </BrowserRouter>
