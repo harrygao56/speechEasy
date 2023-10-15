@@ -16,6 +16,13 @@ function HomePage () {
         setPoints([...points, '']);
     };
 
+    const handleButtonClick = () => {
+        const textarea = document.getElementById('point1');
+        if (textarea) {
+          const value = textarea.value;
+          alert('Textarea Value: ' + value);
+        }
+    };
     return (
         <div class="homepage">
             <div class="brand">
@@ -30,22 +37,22 @@ function HomePage () {
 
 
             <div class="go">
-                <button class="goButton" id="goButton">Begin!</button>
+                <button class="goButton" id="goButton" onClick={handleButtonClick}>Begin!</button>
             </div>
 
 
             <div>
                 <h1>Talking Points</h1>
                 {points.map((point, index) => (
-                <div key={index} style={{ marginBottom: '10px' }}>
                     <textarea
+                        id = {`point${index + 1}`}
                         value={point}
                         onChange={(e) => handlePointChange(index, e.target.value)}
                         placeholder={`Point ${index + 1}`}
                         style={{ width: '50%', minHeight: '50px' }}
                     />
-                </div>
                 ))}
+                <br/>
                 <button onClick={handleAddPoint}>Add Point</button>
             </div>
         </div>
