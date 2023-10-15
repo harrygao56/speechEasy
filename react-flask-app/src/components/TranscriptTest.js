@@ -55,9 +55,11 @@ const TranscriptTest = () => {
         navigator.mediaDevices
             .getUserMedia({ audio: true })
             .then((stream) => {
+            // eslint-disable-next-line no-undef
             recorder = new RecordRTC(stream, {
                 type: "audio",
                 mimeType: "audio/webm;codecs=pcm", // endpoint requires 16bit PCM audio
+                // eslint-disable-next-line no-undef
                 recorderType: StereoAudioRecorder,
                 timeSlice: 250, // set 250 ms intervals of data that sends to AAI
                 desiredSampRate: 16000,
