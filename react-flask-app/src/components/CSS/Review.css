@@ -1,0 +1,25 @@
+.review-container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .transcript {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .speech-review {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .speech-review li {
+    font-size: 14px;
+    color: #555;
+    padding: 5px 0;
+  }
+  

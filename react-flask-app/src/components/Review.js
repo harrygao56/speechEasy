@@ -1,10 +1,12 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useMyPointsContext } from '../pointscontext';
+import './CSS/Review.css';
 
 
 const Review = () => {
     const [points, setPoints] = useMyPointsContext();
+    
     var concated = points.join(" ");
 
     async function review() {
@@ -23,11 +25,16 @@ const Review = () => {
     }, []);
 
     return (
-        <div>
+        <div class = "review-container">
             <p>{concated}</p>
             <p id="speech-review">Generating Speech Review...</p>
         </div>
     )
+
 }
 
 export default Review;
+
+
+
+
