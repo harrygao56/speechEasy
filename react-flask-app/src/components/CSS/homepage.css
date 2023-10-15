@@ -14,22 +14,25 @@
     padding: 10px;
 }
 .totalTime{
+    margin-top: -8px;
     position: absolute;
     top: 150px;
     left: 900px;
-    width: 180px;
+    width: 300px;
     height: 100px;
     background-color: #0f81ec;
     padding: 10px;
+    border: solid rgb(100, 99, 99) 2px;
     border-radius: 10px;
 }
 .totalTime p{
+    margin-top: 5px;
     color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    font-size: 50px;
 }
 .totalTime label{
     color: #ffffff;
@@ -40,7 +43,7 @@
     position: absolute;
     top: 300px;
     left: 900px;
-    width: 200px;
+    width: 325px;
     height: 100px;
     background-color: #0f81ec;
     color: #ffffff;
@@ -53,12 +56,14 @@
     border-radius: 10px;
 }
 .point{
+    margin-left: 50px;
     font-family: Arial, Helvetica, sans-serif;
     border-color: #0f81ec;
     border-width: 2px;
     border-radius: 10px;
 }
 .pointTime{
+    margin-left: 50px;
     font-family: Arial, Helvetica, sans-serif;
     height: 30px;
     border-color: #0f81ec;
@@ -66,6 +71,7 @@
     border-radius: 10px;
 }
 .addPoint{
+    margin-left: 50px;
     width: 100px;
     height: 50px;
     background-color: #0f81ec;
@@ -80,4 +86,12 @@
 }
 .goLink{
     color: #ffffff;
+}
+.talkingPoints h1{
+    color: #0f81ec;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 50px;
+}
+body{
+    background-color: #f5f5f5;
 }
