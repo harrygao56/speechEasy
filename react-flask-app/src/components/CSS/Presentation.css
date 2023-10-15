@@ -1,0 +1,22 @@
+.timer{
+    position: fixed;
+    top: 5%;
+    left: 37.5%;
+    color: #0f81ec;
+    font-size: 60px;
+    padding: 0px;
+}
+.timerTime{
+    position: absolute;
+    top: 70%;
+    left: 20%;
+    color: #0f81ec;
+    font-size: 100px;
+    padding: 0px;
+}
+.pointPrompt{
+
+}
+.userPrompt{
+    
+}
