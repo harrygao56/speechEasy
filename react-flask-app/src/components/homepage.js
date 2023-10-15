@@ -43,9 +43,7 @@ function HomePage () {
                 temp.push(points[i]);
             }
         }
-        alert(temp);
         setPoints(temp);
-        alert(points);
         const textarea = document.getElementById('point1');
         if (textarea) {
           const value = textarea.value;

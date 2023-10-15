@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './CSS/Presentation.css';
 import { useMyPointsContext } from '../pointscontext';
 
@@ -6,6 +7,7 @@ const Presentation = () => {
     const [ points, setPoints ] = useMyPointsContext();
     const size = points.length;
     const interval = 10;
+    const navigate = useNavigate();
 
     const [color, setColor] = useState("green"); 
     const [secondSeconds, setSecondSeconds] = useState(0);
@@ -141,9 +143,14 @@ const Presentation = () => {
   }
 
     useEffect(() => {
-      const interval = setInterval(() => {
+      const interval1 = setInterval(() => {
         // Code to be executed every second
         seconds += 1;
+        if (seconds > size * 10) {
+            setPoints(speechIntervals);
+            stop();
+            navigate('/Review');
+        }
         setSecondSeconds(seconds);
       }, 1000);
 
@@ -152,7 +159,7 @@ const Presentation = () => {
   
       return () => {
         // Clean up the interval on component unmount
-        clearInterval(interval);
+        clearInterval(interval1);
         clearInterval(compInterval);
       };
     }, []);

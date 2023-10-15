@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState } from 'react';
 const PointsArray = createContext();
 
 export const PointsContextProvider = ({ children }) => {
-  const [myPoints, setMyPoints] = useState(['Item 1', 'Item 2', 'Item 3']);
+  const [myPoints, setMyPoints] = useState(['Item 1']);
 
   return (
     <PointsArray.Provider value={[ myPoints, setMyPoints ]}>

@@ -7,6 +7,8 @@ import Brand from "./Components/Brand";
 import TranscriptTest from './Components/TranscriptTest';
 import Countdown from './Components/Countdown';
 import Presentation  from './Components/Presentation';
+import Review from './Components/Review'
+
 const App = () => {
   return (
     <div>
@@ -14,8 +16,9 @@ const App = () => {
        <Routes>
          <Route exact path="/" element={<HomePage />}/>
          <Route exact path="/tt" element={<TranscriptTest />}/>
-         <Route exact path="countdown" element = {<Countdown/>}/>
-         <Route exact path="presentation" element = {<Presentation/>}/>
+         <Route exact path="/countdown" element = {<Countdown/>}/>
+         <Route exact path="/presentation" element = {<Presentation/>}/>
+         <Route exact path="/review" element = {<Review/>}/>
        </Routes>
     </div>
   );
