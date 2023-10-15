@@ -1,13 +1,14 @@
-
 import React from 'react';
 import './CSS/homepage.css';
 import {useState} from 'react';
 import { useMyPointsContext } from '../pointscontext';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function HomePage () {
-    const [ points, setPoints ] = useMyPointsContext();
+    const [points,setPoints] = useMyPointsContext();
     const [totalTime, setTotalTime] = useState('0:00');
+    const [time, setTimes] = useState([0,0,0]);
     
     const handlePointChange = (index, value) => {
         const updatedPoints = [...points];
@@ -19,12 +20,12 @@ function HomePage () {
         setPoints([...points, '']);
     };
     const handleTimeChange = (index, newTime) => {
-        const newPoints = [...points];
-        newPoints[index] = newTime;
-        setPoints(newPoints);
+        const times = [...time];
+        times[index] = newTime;
+        setTimes(times);
     
         // Calculate the total time
-        const totalTimeInSeconds = newPoints.reduce((acc, time) => {
+        const totalTimeInSeconds = times.reduce((acc, time) => {
           // Convert input to seconds
           const seconds = parseInt(time, 10);
           return acc + (isNaN(seconds) ? 0 : seconds);
@@ -36,8 +37,16 @@ function HomePage () {
         setTotalTime(`${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
       };
     const handleButtonClick = () => {
+        const temp = [];
+        for (let i = 0; i < points.length; i++) {
+            for (let j = 0; j<time[i]; j = j+10){
+                temp.push(points[i]);
+            }
+        }
+        alert(temp);
+        setPoints(temp);
+        alert(points);
         const textarea = document.getElementById('point1');
-        alert(points[0]);
         if (textarea) {
           const value = textarea.value;
         }
