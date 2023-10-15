@@ -3,7 +3,7 @@ import './CSS/Brand.css';
 const Brand = () => {
     return (
         <div className="box">
-          <p className="box-text">SpeechEasy</p>
+          <p className="box-text">speechEasy</p>
         </div>
     );
 };

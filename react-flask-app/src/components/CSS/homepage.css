@@ -1,0 +1,10 @@
+.totalTime{
+    position: absolute;
+    top: 200px;
+    right: 300px;
+}
+.go{
+    position: absolute;
+    top: 400px;
+    right: 300px;
+}
