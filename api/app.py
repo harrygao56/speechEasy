@@ -16,31 +16,37 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Compare endpoint: Used to compare the speaker transcription to the current talking point, return whether or not the speaker is on track
 class Compare(Resource):
+    prompt = """
+    I will give you two different excerpts, your job is to determine whether the two prompts are related.
+    Be lenient - if the excerpts are roughly about the same topic consider them related.
+    I will provide the two excerpts in this format: ["excerpt1", "excerpt2"].
+    If you determine that the excerpts are related, return "True".
+    Otherwise, return "False".
+    Do not include any addition text of punctuation.
+    """
+
+
     def post(self):
         talking_point = request.form['talking_point']
         speech = request.form['speech']
 
-        content = f"""
-            The following text is a talking point of a speech: "{talking_point}"
-            I will now give you an excerpt of a speech. Is this excerpt related to the talking point: "{speech}"
-            If yes, respond: "True"
-            If no, respond with "False"
-            Do not include any extra text in your answer. Also, do not include a period at the end of your response. Please be wary that the provided speech is a audio transcription, and certain parts may be cut off or inaccurate.
-        """
+        input = "[\"" + talking_point + "\", \"" + speech + "\"]"
+        print(input)
 
         messages = [
             {
+                "role": "system",
+                "content": self.prompt
+            },
+            {
                 "role": "user",
-                "content": content
+                "content": input
             }
         ]
 
         output = openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=messages)['choices'][0]['message']['content']
         return output
 
-
-# Adding api endpoints
-api.add_resource(Compare, '/compare')
 
 class Review(Resource):
     def post(self):
@@ -56,6 +62,10 @@ class Review(Resource):
         ]
         output = openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=messages)['choices'][0]['message']['content']
         return output
+
+
+# Adding api endpoints
+api.add_resource(Compare, '/compare')
 api.add_resource(Review, '/review')
 
 

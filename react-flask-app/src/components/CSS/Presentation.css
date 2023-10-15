@@ -1,4 +1,4 @@
-#pointPrompt {
+#guide {
     animation: drop 1s;
 }
 
@@ -67,10 +67,6 @@ label {
     padding: 10px;
 }
 
-#message {
-    font-size: 18px;
-}
-
 .card {
     background-color: rgb(239, 239, 239);
     color: #0f81ec;
@@ -85,11 +81,23 @@ label {
     text-align: center;
 }
 
+#messageCard {
+    width: 600px;
+}
+
+#message {
+    font-size: 18px;
+}
+
 #card-container {
     display: flex;
     flex-direction: row;
     margin-top: 60px;
+}
 
+#pointPrompt {
+    padding: 15px;
+    width: 600px;
 }
 
 #presentation {
@@ -104,3 +112,6 @@ label {
     font-size: 60px;
 }
 
+body {
+    background-color: "F5F5F5";
+}

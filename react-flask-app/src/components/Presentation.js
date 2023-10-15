@@ -9,6 +9,7 @@ const Presentation = () => {
     const interval = 10;
     const navigate = useNavigate();
     const [secondSeconds, setSecondSeconds] = useState(0);
+    const [currPrompt, setCurrPrompt] = useState("Listening...");
 
   var seconds = 0;
   
@@ -132,9 +133,11 @@ const Presentation = () => {
       console.log(pt);
       if (output === "True") {
         document.body.style.backgroundColor = "#73ffa6";
+        setCurrPrompt("You're on track!");
       }
       else {
         document.body.style.backgroundColor = "#ff7373";
+        setCurrPrompt("Going off topic...");
       }
   }
 
@@ -147,6 +150,12 @@ const Presentation = () => {
             document.body.style.backgroundColor = "white";
             stop();
             navigate('/Review');
+        }
+        if (Math.floor((seconds + 5)/10) < size && points[Math.floor((seconds + 5)/10)] != points[Math.floor(seconds/10)] && (seconds + 3) % 10 == 0) {
+            setCurrPrompt("Wrap up this talking point...");
+        }
+        else if (Math.floor((seconds + 5)/10) >= size) {
+            setCurrPrompt("Wrap up your speech...");
         }
         setSecondSeconds(seconds);
       }, 1000);
@@ -183,7 +192,7 @@ const Presentation = () => {
             </div>
             <div id="presentation">
                 <div id="card-container">
-                    <div class="card" style={{marginRight: "70px"}}>
+                    <div id="messageCard" class="card" style={{marginRight: "70px"}}>
                         <label>Live Transcript:</label>
                         <p id="message"></p>
                     </div>
@@ -192,9 +201,12 @@ const Presentation = () => {
                         <p id="time">{formatTime(secondSeconds)}</p>
                     </div>
                 </div>
-                <div class="card" style={{marginTop: "200px"}}>
+                <div class="card" style={{marginTop: "30px"}}>
+                    <p id="guidePrompt">{currPrompt}</p>
+                </div>
+                <div class="card" id="pointPrompt" style={{marginTop: "30px"}}>
                     <label>Current Talking Point:</label>
-                    <p id="pointPrompt">{setMsgPoints(secondSeconds)}</p>
+                    <p style={{fontSize: "17px"}}>{setMsgPoints(secondSeconds)}</p>
                 </div>
             </div>
         </div>
