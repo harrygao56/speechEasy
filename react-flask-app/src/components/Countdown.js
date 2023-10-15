@@ -4,7 +4,7 @@ import './CSS/Countdown.css';
 
 const Countdown = () => {
   const navigate = useNavigate();
-  const [countdown, setCountdown] = useState(5); 
+  const [countdown, setCountdown] = useState(3); 
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -22,15 +22,11 @@ const Countdown = () => {
   return (
     <div>
       <div class="brand">
-                <p class="brandText">speechEasy</p>
+        <p class="brandText">speechEasy</p>
       </div>
       <div class="time">
-        <h1>Begin presentation in:</h1>
-        {countdown === 0 ? (
-          <p>Time's up!</p>
-        ) : (
-          <p>{countdown}</p>
-        )}
+        <h1 id="begin-label">Begin presentation in:</h1>
+        <p id="countdown">{countdown}</p>
       </div>
     </div>
   );
