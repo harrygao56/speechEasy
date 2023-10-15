@@ -52,6 +52,13 @@
     padding: 10px;
     border-radius: 10px;
 }
-.talkingPoints{
-    
+.point{
+    border-color: #0f81ec;
+    border-width: 2px;
+    border-radius: 10px;
+}
+.pointTime{
+    border-color: #0f81ec;
+    border-width: 2px;
+    border-radius: 10px;
 }

@@ -44,7 +44,7 @@ const Presentation = () => {
           </div>
 
           <div class="userPrompt">
-
+            <div class="promptBox"></div>
           </div>
         </div>
       );

@@ -15,8 +15,16 @@
     padding: 0px;
 }
 .pointPrompt{
-
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    width: 500px;
 }
-.userPrompt{
-    
+.promptBox{
+    position: absolute;
+    top: 50%;
+    left: 37.5%;
+    color: #0f81ec;
+    font-size: 60px;
+    padding: 0px;
 }
