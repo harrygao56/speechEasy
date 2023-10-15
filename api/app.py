@@ -12,29 +12,31 @@ CORS(app)
 api = Api(app)
 
 # Set OpenAI API Key 
-openai.api_key = os.getenv("OPENAI_API_KEY")
-print(os.getenv("OPENAI_API_KEY"))
+openai.api_key = "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"
 
 # Compare endpoint: Used to compare the speaker transcription to the current talking point, return whether or not the speaker is on track
 class Compare(Resource):
-    prompt = ""
-
     def post(self):
-        input = request.form['text']
+        talking_point = request.form['talking_point']
+        speech = request.form['speech']
 
-        messages = []
-        messages.append({"role": "system", "content": self.prompt})
+        content = f"""
+            The following text is a talking point of a speech: "{talking_point}"
+            I will now give you an excerpt of the transcription of a speech. Do you think it is likely that this excerpt is part of the given talking point: "{speech}"
+            If yes, respond: "True"
+            If no, respond with "False"
+            Do not include any extra text in your answer. Also, do not include a period at the end of your response.
+        """
 
-        question = {}
-        question['role'] = 'user'
-        question['content'] = input
-        messages.append(question)
-        output = openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=messages)
-        return output['choices'][0]['message']['content']
+        messages = [
+            {
+                "role": "user",
+                "content": content
+            }
+        ]
 
-
-class Listening(Resource):
-    print("hi")
+        output = openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=messages)['choices'][0]['message']['content']
+        return output
 
 
 # Adding api endpoints
