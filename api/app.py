@@ -22,10 +22,10 @@ class Compare(Resource):
 
         content = f"""
             The following text is a talking point of a speech: "{talking_point}"
-            I will now give you an excerpt of the transcription of a speech. Do you think it is likely that this excerpt is part of the given talking point: "{speech}"
+            I will now give you an excerpt of a speech. Is this excerpt related to the talking point: "{speech}"
             If yes, respond: "True"
             If no, respond with "False"
-            Do not include any extra text in your answer. Also, do not include a period at the end of your response.
+            Do not include any extra text in your answer. Also, do not include a period at the end of your response. Please be wary that the provided speech is a audio transcription, and certain parts may be cut off or inaccurate.
         """
 
         messages = [
